@@ -2,6 +2,7 @@
 import os
 import aws_cdk as cdk
 from aws_infra.sqs import SQS
+from aws_infra.iam import IAM
 from models.enum.aws import AWS, Environment
 
 app = cdk.App()
@@ -21,5 +22,6 @@ us_west_2 = cdk.Environment(
 
 
 SQS(app, "SQSQueue", env=us_east_1, stack_name="sqs-queue-stack")
+IAM(app, "IamStack", env=us_east_1, stack_name="iam-stack")
 
 app.synth()
